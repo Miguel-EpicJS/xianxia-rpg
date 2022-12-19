@@ -1,3 +1,5 @@
+from random import choice
+
 class Player:
 
     def __init__(self, name, age = 240, qi = 0, rank = 0):
@@ -13,7 +15,14 @@ class Player:
         self.ranksMajor = ["Qi Gathering", "Foundation Building", "Golden Core", "Nascent Soul"]
         self.ranksMinor = ["I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX", "X"]
 
-        self.grades = ["Mortal", "Earth", "Heaven", "Immortal"]  # for future updates
+        self.grades = [ 
+            { "grade": "Mortal", "multiplier": 1 }, 
+            { "grade": "Earth", "multiplier": 2 },  
+            { "grade": "Heaven", "multiplier": 3 },  
+            { "grade": "Immortal", "multiplier": 5 }
+        ]
+
+        self.talent = choice(self.grades)
 
     def levelUp(self):
         if self.qi >= self.qiNext:
@@ -27,12 +36,15 @@ class Player:
         return False
 
     def gather(self):
-        self.qi += self.amount
+        self.qi += self.amount * self.talent["multiplier"]
         self.age += 1
         return self.amount
 
     def getAmount(self):
         return self.amount
+
+    def getTalent(self):
+        return self.talent["grade"]
 
     def getRank(self):
         return f"{self.ranksMinor[ self.rank % 10 ]} {self.ranksMajor[ self.rank // 10 ]}"
@@ -43,5 +55,6 @@ class Player:
     def stats(self):
         print(f"Name: {self.name} # ", end='')
         print(f"Age: {self.getAge()['result']} # ", end='')
+        print(f"Talent: {self.getTalent()} # ", end='')
         print(f"Cultivation: { self.getRank() } ", end='')
         print(f"{self.qi}/{self.qiNext}")

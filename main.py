@@ -1,4 +1,6 @@
 from os import system, name
+from time import sleep
+from random import choice
 
 from world import World
 from player import Player
@@ -6,7 +8,6 @@ from menu import Menu
 
 from subprocess import call 
 
-from time import sleep
 
 def clear():
     _ = system('clear') if name == 'posix' else system('cls')
@@ -44,10 +45,11 @@ if __name__ == "__main__":
                 print(f"> No qi to gather")
             if player.levelUp():
                 print(f"> Congratulations!")
-            sleep(1)
+            sleep(0.5)
         elif option == '2':
             print(f"> Moving random direction")
-            # todo
+            op = [-1, 0, 1]
+            mainWorld.move( ( choice(op), choice(op) ) )
 
 
     clear()
