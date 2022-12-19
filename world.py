@@ -8,7 +8,6 @@ class World:
         self.tilesType = Enum('Tiles', ["Player", "Forest", "City"])
         self.tilesDefault = { "type": self.tilesType.Forest.value, "qi": 100 }
 
-
     def create(self, size = 8):
         self.size = size
         
@@ -35,6 +34,8 @@ class World:
         self.world[self.current[0]][self.current[1]]["type"] = self.tilesType.Player.value
 
     def absorb(self, amount):
-        self.world[self.current[0]][self.current[1]]["qi"] -= amount
-        return amount
+        if self.world[self.current[0]][self.current[1]]["qi"] >= amount:
+            self.world[self.current[0]][self.current[1]]["qi"] -= amount
+            return True
+        return False
 

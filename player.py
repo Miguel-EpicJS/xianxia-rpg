@@ -8,6 +8,8 @@ class Player:
         self.rank = rank
         self.qiNext = 2**rank * 100
 
+        self.amount = 10
+
         self.ranksMajor = ["Qi Gathering", "Foundation Building", "Golden Core", "Nascent Soul"]
         self.ranksMinor = ["I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX", "X"]
 
@@ -24,12 +26,22 @@ class Player:
 
         return False
 
-    def gather(self, amount):
-        self.qi += amount
+    def gather(self):
+        self.qi += self.amount
         self.age += 1
+        return self.amount
+
+    def getAmount(self):
+        return self.amount
 
     def getRank(self):
         return f"{self.ranksMinor[ self.rank % 10 ]} {self.ranksMajor[ self.rank // 10 ]}"
 
     def getAge(self):
         return { "value": self.age, "result": f"{self.age//12}y {self.age%12}m" }
+
+    def stats(self):
+        print(f"Name: {self.name} # ", end='')
+        print(f"Age: {self.getAge()['result']} # ", end='')
+        print(f"Cultivation: { self.getRank() } ", end='')
+        print(f"{self.qi}/{self.qiNext}")
