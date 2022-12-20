@@ -54,6 +54,9 @@ class Player:
     def getAge(self):
         return { "value": self.age, "result": f"{self.age//12}y {self.age%12}m" }
 
+    def increaseAge(self, val = 1):
+        self.age += val
+
     def stats(self):
         statsArr = [self.name, self.getAge()['result'], self.getTalent(), self.getRank()]
         color = Colors()

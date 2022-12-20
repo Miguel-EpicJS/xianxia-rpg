@@ -34,7 +34,6 @@ if __name__ == "__main__":
         menuController.mainMenu()
 
         option = (input("> "))
-
         if option == '0':
             break 
         elif option == '1':
@@ -49,6 +48,7 @@ if __name__ == "__main__":
         elif option == '2':
             print(f"> Moving random direction")
             op = [-1, 0, 1]
+            player.increaseAge()
             mainWorld.move( ( choice(op), choice(op) ) )
 
 
