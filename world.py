@@ -29,6 +29,8 @@ class World:
         return self.world
 
     def move(self, pos):
+        if pos[0] + self.current[0] < 0 or pos[1] + self.current[1] < 0 or pos[0] + self.current[0] == self.size or pos[1] + self.current[1] == self.size:
+            return
         self.world[self.current[0]][self.current[1]]["type"] = self.tilesType.Forest.value
         self.current = tuple(map(lambda i, j: i+j, self.current, pos))
         self.world[self.current[0]][self.current[1]]["type"] = self.tilesType.Player.value
