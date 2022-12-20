@@ -38,9 +38,10 @@ class Player:
         return False
 
     def gather(self):
-        self.qi += self.amount * self.talent["multiplier"]
+        totQi = self.amount * self.talent["multiplier"]
+        self.qi += totQi
         self.age += 1
-        return self.amount
+        return totQi
 
     def getAmount(self):
         return self.amount
@@ -60,6 +61,7 @@ class Player:
     def stats(self):
         statsArr = [self.name, self.getAge()['result'], self.getTalent(), self.getRank()]
         color = Colors()
+
         print(f"Name: {color.White(statsArr[0])} # ", end='')
         print(f"Age: {color.White(statsArr[1])} # ", end='')
         print(f"Talent: {color.White(statsArr[2])} # ", end='')

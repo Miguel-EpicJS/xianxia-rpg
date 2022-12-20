@@ -3,13 +3,13 @@ class Colors:
         pass 
 
     def Red(self, el):
-        return f"\33[0;49;31m{el}\33[0m"
+        return f"\33[0;91m{el}\33[0m"
 
     def Green(self, el):
-        return f"\33[0;49;32m{el}\33[0m"
+        return f"\33[0;92m{el}\33[0m"
 
     def Yellow(self, el):
-        return f"\33[0;49;33m{el}\33[0m"
+        return f"\33[0;93m{el}\33[0m"
 
     def Blue(self, el):
         return f"\33[0;49;34m{el}\33[0m"

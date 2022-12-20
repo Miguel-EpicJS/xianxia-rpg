@@ -1,7 +1,12 @@
 from enum import Enum
 
+from colors import Colors
+
 class World:
     def __init__(self, world = []):
+    
+        self.colorManager = Colors()
+
         self.world = world
         self.current = (0,0)
         self.size = 0
@@ -20,7 +25,11 @@ class World:
         for i in range(self.size):
             for j in range(self.size):
                 if self.world[i][j]["type"] == self.tilesType.Player.value:
-                    print( f'\033[93m{self.world[i][j]["type"]}\033[0m', end=' ' )
+                    print( f'{self.colorManager.Yellow(self.world[i][j]["type"])}', end=' ' )
+                elif self.world[i][j]["qi"] == 0:
+                    print( f'{self.colorManager.Red(self.world[i][j]["type"])}', end=' ')
+                elif self.world[i][j]["type"] == self.tilesType.Forest.value:
+                    print( f'{self.colorManager.Green(self.world[i][j]["type"])}', end=' ')
                 else:
                     print( self.world[i][j]["type"], end=' ' )
             print("")
