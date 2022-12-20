@@ -1,5 +1,7 @@
 from random import choice
 
+from colors import Colors
+
 class Player:
 
     def __init__(self, name, age = 240, qi = 0, rank = 0):
@@ -53,8 +55,10 @@ class Player:
         return { "value": self.age, "result": f"{self.age//12}y {self.age%12}m" }
 
     def stats(self):
-        print(f"Name: {self.name} # ", end='')
-        print(f"Age: {self.getAge()['result']} # ", end='')
-        print(f"Talent: {self.getTalent()} # ", end='')
-        print(f"Cultivation: { self.getRank() } ", end='')
+        statsArr = [self.name, self.getAge()['result'], self.getTalent(), self.getRank()]
+        color = Colors()
+        print(f"Name: {color.White(statsArr[0])} # ", end='')
+        print(f"Age: {color.White(statsArr[1])} # ", end='')
+        print(f"Talent: {color.White(statsArr[2])} # ", end='')
+        print(f"Cultivation: { color.White(statsArr[3]) } ", end='')
         print(f"{self.qi}/{self.qiNext}")
