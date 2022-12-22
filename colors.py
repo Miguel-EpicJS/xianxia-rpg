@@ -1,4 +1,7 @@
 class Colors:
+    """
+        Class to manage the colors used when styling the text ui
+    """
     def __init__(self):
         pass 
 
