@@ -4,7 +4,9 @@ from colors import Colors
 
 class World:
     def __init__(self, world = []):
-    
+        """
+        Constructor for World class, where the map is loaded
+        """
         self.colorManager = Colors()
 
         self.world = world
