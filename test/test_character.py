@@ -1,4 +1,4 @@
-import unittest, sys
+import sys
 
 from pathlib import Path
 
@@ -8,24 +8,18 @@ sys.path.insert(0, path)
 
 from src.character import Character
 
-print(sys.path)
 
-class TestCharacterMethods(unittest.TestCase):
-    def setUp(self):
-        pass
-
+class TestCharacterMethods():
     def test_character_creation(self):
         characterName = "name"
         characterAge = 240
         testCharacter = Character(characterName, characterAge)
         
-        self.assertEqual(characterName, testCharacter.getName(), "Name should match")
-        self.assertEqual(characterAge, testCharacter.getAge(), "Age should match")
-        self.assertEqual(characterAge // 12, testCharacter.getFormatedAge()["years"], "Wrong math on formated age(years)")
-        self.assertEqual(characterAge % 12, testCharacter.getFormatedAge()["months"], "Wrong math on formated age(years)")
+        assert characterName == testCharacter.getName()
+        assert characterAge  == testCharacter.getAge()
+        assert characterAge // 12 == testCharacter.getFormatedAge()["years"]
+        assert characterAge % 12  == testCharacter.getFormatedAge()["months"]
 
-        self.assertNotEqual("randomName", testCharacter.getName(), "Name should not match")
-        self.assertNotEqual(40, testCharacter.getAge(), "Age should not match")
+        assert "randomName" != testCharacter.getName()
+        assert 40 != testCharacter.getAge()
 
-if __name__ == '__main__':
-    unittest.main()
