@@ -6,7 +6,7 @@ path = str(Path(Path(__file__).parent.absolute()).parent.absolute())
 
 sys.path.insert(0, path)
 
-from Character import Character
+from src.character import Character
 
 print(sys.path)
 
@@ -21,6 +21,8 @@ class TestCharacterMethods(unittest.TestCase):
         
         self.assertEqual(characterName, testCharacter.getName(), "Name should match")
         self.assertEqual(characterAge, testCharacter.getAge(), "Age should match")
+        self.assertEqual(characterAge // 12, testCharacter.getFormatedAge()["years"], "Wrong math on formated age(years)")
+        self.assertEqual(characterAge % 12, testCharacter.getFormatedAge()["months"], "Wrong math on formated age(years)")
 
         self.assertNotEqual("randomName", testCharacter.getName(), "Name should not match")
         self.assertNotEqual(40, testCharacter.getAge(), "Age should not match")
