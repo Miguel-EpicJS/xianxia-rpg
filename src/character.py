@@ -3,6 +3,11 @@ class Character:
             self.name = name
             self.age = age
 
+            self.rank = 1
+
+            self.qi = 0
+            self.qiForNextRank = 2 ** self.rank * 100
+
     def getName(self):
         return self.name
     
@@ -11,6 +16,20 @@ class Character:
 
     def getFormatedAge(self):
         return { 'years': self.age // 12, 'months': self.age % 12}
+
+    def rankUp(self):
+        if self.qi >= self.qiForNextRank:
+
+            self.qi -= self.qiForNextRank
+            self.rank += 1
+
+            self.calculateNextRankQi()
+            return True
+
+        return False
+
+    def calculateNextRankQi(self):
+        self.qiForNextRank = 2 ** self.rank * 100
 
     def printStatus(self):
         print(f"{'*' * 33}")
